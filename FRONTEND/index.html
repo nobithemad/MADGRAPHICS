@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAD GRAPHICS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #181818;
+            color: #f0f0f0;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+        .image-item {
+            height: auto;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            background-color: #2a2a2b;
+            position: relative;
+        }
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+            display: block;
+            aspect-ratio: 16 / 9;
+        }
+        .image-item img:hover {
+            transform: scale(1.05);
+        }
+        /* Adjusted for very small screens */
+        @media (max-width: 480px) {
+            .image-grid {
+                grid-template-columns: 1fr; /* 1 column on very small screens */
+            }
+            .nav-links {
+                flex-direction: column; /* Stack navigation links on small screens */
+            }
+            .nav-link {
+                margin: 0.5rem 0; /* Add vertical margin to nav links */
+                text-align: center; /* Center nav links */
+            }
+        }
+        /* Adjusted for tablets and larger screens */
+        @media (min-width: 481px) and (max-width: 1200px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+            }
+        }
+        /* Adjusted for desktops */
+        @media (min-width: 1201px) {
+            .image-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns on desktops */
+            }
+        }
+        .header {
+            background-color: #2a2a2b;
+        }
+        .footer {
+            background-color: #2a2a2b;
+            color: #d1d1d1;
+        }
+        .nav-link {
+            color: #f0f0f0;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ffdb58;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            margin: 0.5rem;
+        }
+        .download-button {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+        .image-item:hover .download-button {
+            opacity: 1;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        #services, #prices, #client-reviews, #contact {
+            margin-bottom: 2rem;
+        }
+        .bg-gray-800 {
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        .text-gray-300 {
+            line-height: 1.7;
+        }
+        .list-disc {
+            margin-left: 1rem;
+            list-style-position: inside;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #4a5568;
+        }
+        th {
+            font-weight: 600;
+        }
+        @media (max-width: 640px) {
+            th, td {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            th {
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <header class="header py-4 text-center rounded-b-md shadow-md">
+        <h1 class="text-2xl font-semibold" style="color: #F3C623;">MAD GRAPHICS</h1>
+        <p class="text-lg text-gray-300" style="padding-top: 0.5rem;">A collection of our best work</p>
+        <nav class="nav-links">
+            <a href="#home" class="nav-link">HOME</a>
+            <a href="#services" class="nav-link">SERVICES</a>
+            <a href="#prices" class="nav-link">PRICES</a>
+            <a href="#client-reviews" class="nav-link">CLIENT REVIEWS</a>
+            <a href="#contact" class="nav-link">CONTACT ME</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto my-8">
+        <section id="home" class="image-grid">
+            <div class="image-item">
+                <img src="./assets/images/THUMB 1.jpg" alt="Project 1" data-filename="project-1.jpg">
+                <button class="download-button" data-image-url="./assets/images/THUMB 1.jpg">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="./assets/images/THUMB 2.jpg" alt="Project 2" data-filename="project-2.jpg">
+                <button class="download-button" data-image-url="./assets/images/THUMB 2.jpg">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="./assets/images/THUMB 3.jpg" alt="Project 3" data-filename="project-3.jpg">
+                <button class="download-button" data-image-url="./assets/images/THUMB 3.jpg">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="./assets/images/THUMB 4.png" alt="Project 4" data-filename="project-4.jpg">
+                <button class="download-button" data-image-url="./assets/images/THUMB 4.png">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="./assets/images/THUMB 5.jpg" alt="Project 5" data-filename="project-5.jpg">
+                <button class="download-button" data-image-url="./assets/images/THUMB 5.jpg">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="./assets/images/THUMB 6.png" alt="Project 6" data-filename="project-6.jpg">
+                <button class="download-button" data-image-url="./assets/images/THUMB 6.png">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="https://placehold.co/600x400/EEE/31343C" alt="Project 7" data-filename="project-7.jpg">
+                <button class="download-button" data-image-url="https://placehold.co/600x400/EEE/31343C">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="https://placehold.co/600x400/EEE/31343C" alt="Project 8" data-filename="project-8.jpg">
+                <button class="download-button" data-image-url="https://placehold.co/600x400/EEE/31343C">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="https://placehold.co/600x400/EEE/31343C" alt="Project 9" data-filename="project-9.jpg">
+                <button class="download-button" data-image-url="https://placehold.co/600x400/EEE/31343C">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="https://placehold.co/600x400/EEE/31343C" alt="Project 10" data-filename="project-10.jpg">
+                <button class="download-button" data-image-url="https://placehold.co/600x400/EEE/31343C">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="https://placehold.co/600x400/EEE/31343C" alt="Project 11" data-filename="project-11.jpg">
+                <button class="download-button" data-image-url="https://placehold.co/600x400/EEE/31343C">Download</button>
+            </div>
+            <div class="image-item">
+                <img src="https://placehold.co/600x400/EEE/31343C" alt="Project 12" data-filename="project-12.jpg">
+                <button class="download-button" data-image-url="https://placehold.co/600x400/EEE/31343C">Download</button>
+            </div>
+        </section>
+        <section id="services" class="my-8">
+            <h2 class="text-2xl font-semibold text-white text-center mb-4">Our Services</h2>
+            <div class="bg-gray-800 rounded-md p-6">
+                <p class="text-gray-300">We offer a variety of graphic design services, including logo design, branding, and more. Our team of experienced designers is dedicated to creating high-quality, visually stunning work that meets our clients' needs.</p>
+                <ul class="list-disc list-inside mt-4 text-gray-300">
+                    <li>Logo Design</li>
+                    <li>Brand Identity (Coming Soon)</li>
+                    <li>YouTube Thumbnails</li>
+                    <li>Instagram Posts</li>
+                    <li>Packaging Design (Coming Soon)</li>
+                </ul>
+            </div>
+        </section>
+        <section id="prices" class="my-8">
+            <h2 class="text-2xl font-semibold text-white text-center mb-4">Prices</h2>
+            <div class="bg-gray-800 rounded-md p-6">
+                <p class="text-gray-300 mb-4">
+                    Our pricing varies depending on the specific services required and the complexity of the project. We offer competitive rates and work with our clients to develop a solution that fits their budget.
+                </p>
+                <table class="w-full text-gray-300">
+                    <thead>
+                        <tr>
+                            <th class="text-left py-2">Service</th>
+                            <th class="text-right py-2">Price Range</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2">Logo Design</td>
+                            <td class="text-right py-2"></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">Brand Identity (Coming Soon)</td>
+                            <td class="text-right py-2"></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">YouTube Thumbnails</td>
+                            <td class="text-right py-2"></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">Instagram Posts</td>
+                            <td class="text-right py-2"></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">Packaging Design (Coming Soon)</td>
+                            <td class="text-right py-2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="client-reviews" class="my-8">
+            <h2 class="text-2xl font-semibold text-white text-center mb-4">Client Reviews</h2>
+            <div class="bg-gray-800 rounded-md p-6">
+                <div class="mb-4 p-4 rounded-md bg-gray-700">
+                    <p class="text-gray-300 italic">"MAD GRAPHICS exceeded our expectations with their creative design and attention to detail. They truly captured the essence of our brand."</p>
+                    <p class="text-gray-400 font-semibold mt-2">- John Smith, CEO of TechCorp</p>
+                </div>
+                <div class="mb-4 p-4 rounded-md bg-gray-700">
+                    <p class="text-gray-300 italic">"The team at MAD GRAPHICS was a pleasure to work with. They were responsive, professional, and delivered a fantastic final product on time and within budget."</p>
+                    <p class="text-gray-400 font-semibold mt-2">- Jane Doe, Marketing Director of RetailCo</p>
+                </div>
+            </div>
+        </section>
+         <section id="contact" class="my-8">
+            <h2 class="text-2xl font-semibold text-white text-center mb-4">Contact Us</h2>
+            <div class="bg-gray-800 rounded-md p-6 text-gray-300">
+                <p>
+                    Get in touch with us for a consultation or to discuss your project.
+                </p>
+                <p class="mt-4">
+                    Email: nobithemad@gmail.com
+                </p>
+                <p>
+                    WhatsApp: 8008559757
+                </p>
+                <p>
+                    Address: Katravulapalli, 533437, Andhra Pradesh, India
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer py-4 text-center rounded-t-md shadow-md">
+        <p>© 2025 MAD GRAPHICS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const imageItems = document.querySelectorAll('.image-item');
+
+        imageItems.forEach(item => {
+            const downloadButton = item.querySelector('.download-button');
+            const img = item.querySelector('img');
+
+            downloadButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+
+                const imageUrl = downloadButton.dataset.imageUrl;
+                const filename = img.dataset.filename || 'download.jpg';
+
+                const link = document.createElement('a');
+                link.href = imageUrl;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        });
+    </script>
+</body>
+</html>
